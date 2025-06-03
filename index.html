@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pengumuman Kelulusan MI ANNUR’AIN 2024/2025</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0e6f7;
+            color: #4b0082;
+            text-align: center;
+            padding: 20px;
+        }
+        h1 {
+            color: #800080;
+        }
+        input, button {
+            padding: 10px;
+            margin: 10px;
+            border-radius: 5px;
+            border: 1px solid #800080;
+        }
+        .result {
+            margin-top: 20px;
+            font-size: 20px;
+            font-weight: bold;
+        }
+        .emoji {
+            font-size: 30px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Pengumuman Kelulusan MI ANNUR’AIN 2024/2025</h1>
+    <p>Masukkan NISN atau Nama Lengkap Anda untuk melihat hasil kelulusan:</p>
+    <input type="text" id="inputData" placeholder="Masukkan NISN/Nama">
+    <button onclick="checkResult()">Cek Kelulusan</button>
+    <div class="result" id="result"></div>
+    <script>
+        const announcementDate = new Date('2025-06-03T09:30:00');
+        const now = new Date();
+
+        const students = {
+            "0128001146": ["AKSA IZZAN FISABILHAQ", "LULUS"],
+            "3136911548": ["ALFIN RAIS MA'RUFI", "LULUS"],
+            "3130511810": ["AVRILIA PUTRI ANDINI", "LULUS"],
+            "3136078815": ["BASTIAN ALRAZWA R", "LULUS"],
+            "0132183383": ["BYAN DAFFA PRATAMA PIINGA", "LULUS"],
+            "0134724728": ["CHERYL ALMAIRA", "LULUS"],
+            "0126553019": ["DHITO SYAFAS MARIADI", "LULUS"],
+            "3122862635": ["GIA PUTRI NURHAYATI", "LULUS"],
+            "3121392277": ["KEYLA ZASKIA", "TIDAK LULUS"],
+            "3125944881": ["MOH ABILL AL GIFARI", "LULUS"],
+            "3128000232": ["MOH. RAHSYA AL QIANU", "LULUS"],
+            "3111902960": ["MUH. FATHAN AL FAIRUZ", "LULUS"],
+            "0131908143": ["MUTMAINAH FEBRIANA", "LULUS"],
+            "0121660111": ["NAJWA ALIANI SULFA", "LULUS"],
+            "0133621376": ["NANDA ALISYA PUTRI", "LULUS"],
+            "0126798614": ["NAYLA ANGGRAINI", "LULUS"],
+            "0133063969": ["RAHMAD KHAIRUL ANAM", "LULUS"],
+            "0131962942": ["RAHMAN ALFATIH", "LULUS"],
+            "3138478130": ["RASYA ANGGORO PUTRA PRASONGKO", "LULUS"],
+            "3134375096": ["RIZA ARRAHMAN ADITYA", "LULUS"],
+            "3125598562": ["SALZABIL ZAINZAYYAN", "LULUS"],
+            "0131925183": ["SEKAR ARUM LARASATI", "LULUS"],
+            "0121393300": ["SYIFA AMANDA", "LULUS"],
+            "3135667411": ["ADAM ZULFIKAR", "LULUS"],
+            "3138505924": ["ADZAM NOVAL", "LULUS"],
+            "3133382712": ["ALGIO AZZAM MOHJEA JHORIS", "LULUS"],
+            "0134518756": ["ALKHANSA HAURA TSANI SAMUDIA", "LULUS"],
+            "0135308829": ["ANDI ASKANA RIFDA KALILA", "LULUS"],
+            "0138670943": ["AQIFAH RADWA", "LULUS"],
+            "0134830350": ["ARJUNA PRATAMA", "LULUS"],
+            "0125877779": ["ARSYIL HAYFA AL DZIKRI", "TIDAK LULUS"],
+            "3126052170": ["ARTRI RAHMADANI", "LULUS"],
+            "3134223735": ["ASSYAUQI CHAIRUN NIZAM", "LULUS"],
+            "0137320472": ["FAHIRA AULIA", "LULUS"],
+            "3127767635": ["FASTIVA NISFA ANDITA AYUNG", "LULUS"],
+            "3138396754": ["HAURA NAZHIFA", "LULUS"],
+            "3135834190": ["KHADIFA ANGREANI", "LULUS"],
+            "0125990900": ["KIRANA ADILA PUTRI", "LULUS"],
+            "3129083308": ["MOCH AZZAM ARIFSYAH", "LULUS"],
+            "0135764162": ["MOH PRADIPTA REZA GHOZALI", "LULUS"],
+            "3122101866": ["MUH FAIRUZUL WAFIFARADIS", "LULUS"],
+            "3138792294": ["MUHAMMAD AL AF GANI K ABD LATIF", "LULUS"],
+            "0122833838": ["NAGITA FITRIA AFIANI", "LULUS"],
+            "3127962836": ["SITI AINUL JANNAH", "LULUS"],
+            "3132084900": ["SYAHWI MIRZA ALAMGHIR", "LULUS"],
+            "3134860868": ["SYIFA NUR AZIZAH", "LULUS"],
+            "0129925715": ["TASYA AFIQAH", "LULUS"],
+            "0121384887": ["ZAHRA SEPTIANI", "LULUS"]
+        };
+
+        function checkResult() {
+            const input = document.getElementById('inputData').value.trim().toUpperCase();
+            const resultDiv = document.getElementById('result');
+            const now = new Date();
+
+            if (now < announcementDate) {
+                resultDiv.innerHTML = `⏳ Mohon maaf, hasil kelulusan baru dapat diakses pada Selasa, 3 Juni 2025 pukul 09.30 pagi.`;
+                return;
+            }
+
+            let found = false;
+            for (const [nisn, [name, status]] of Object.entries(students)) {
+                if (nisn === input || name === input) {
+                    found = true;
+                    const emoji = status === "LULUS" ? "🎉🎓" : "😢";
+                    const greeting = status === "LULUS" ? "Selamat!" : "Mohon maaf.";
+                    resultDiv.innerHTML = `${emoji} ${greeting} <br>Nama: ${name}<br>Status Kelulusan: ${status}`;
+                    break;
+                }
+            }
+
+            if (!found) {
+                resultDiv.innerHTML = "❌ Data tidak ditemukan. Pastikan NISN/Nama yang dimasukkan sudah benar.";
+            }
+        }
+    </script>
+    <p>Acara perpisahan akan dilaksanakan pada tanggal 21 Juni 2025. 🎊</p>
+</body>
+</html>
